@@ -63,6 +63,10 @@ keymap.set("n", "<leader>sh", "<C-w>h", { desc = "Move window left" })
 keymap.set("n", "<leader>sk", "<C-w>k", { desc = "Move window down" })
 keymap.set("n", "<leader>sj", "<C-w>j", { desc = "Move window up" })
 keymap.set("n", "<leader>sl", "<C-w>l", { desc = "Move window right" })
+keymap.set("n", "<leader>s<", "<C-w><", { desc = "Resize window left" })
+keymap.set("n", "<leader>s-", "<C-w>-", { desc = "Resize window down" })
+keymap.set("n", "<leader>s+", "<C-w>+", { desc = "Resize window up" })
+keymap.set("n", "<leader>s>", "<C-w>>", { desc = "Resize window right" })
 
 -- additional keymaps
 keymap.set(
