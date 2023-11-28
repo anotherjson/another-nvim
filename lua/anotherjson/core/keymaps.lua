@@ -31,9 +31,6 @@ keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete to sys clipboard
 -- to avoid hell
 keymap.set("n", "Q", "<nop>")
 
--- TODO: when tmux is setup
-keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-
 -- quick fix list
 keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Quick fix next" })
 keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Quick fix previous" })
