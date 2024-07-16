@@ -31,9 +31,6 @@ keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete to sys clipboard
 -- to avoid hell
 keymap.set("n", "Q", "<nop>")
 
--- TODO: when tmux is setup
-keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-
 -- quick fix list
 keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Quick fix next" })
 keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Quick fix previous" })
@@ -60,9 +57,13 @@ keymap.set("n", "<leader>ss", "<C-w>s", { desc = "Split window horizontally" }) 
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 keymap.set("n", "<leader>sh", "<C-w>h", { desc = "Move window left" })
-keymap.set("n", "<leader>sk", "<C-w>k", { desc = "Move window down" })
-keymap.set("n", "<leader>sj", "<C-w>j", { desc = "Move window up" })
+keymap.set("n", "<leader>sj", "<C-w>k", { desc = "Move window down" })
+keymap.set("n", "<leader>sk", "<C-w>j", { desc = "Move window up" })
 keymap.set("n", "<leader>sl", "<C-w>l", { desc = "Move window right" })
+keymap.set("n", "<leader>s<", "<C-w><", { desc = "Resize window left" })
+keymap.set("n", "<leader>s-", "<C-w>-", { desc = "Resize window down" })
+keymap.set("n", "<leader>s+", "<C-w>+", { desc = "Resize window up" })
+keymap.set("n", "<leader>s>", "<C-w>>", { desc = "Resize window right" })
 
 -- additional keymaps
 keymap.set(
@@ -79,3 +80,6 @@ end, { desc = "Source file" })
 
 keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle on undotree" })
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Start fugitive cmd" })
+
+-- gen ai map
+vim.keymap.set({ "n", "v" }, "<leader>]", ":Gen<CR>")
