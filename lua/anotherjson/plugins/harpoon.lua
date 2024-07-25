@@ -10,7 +10,7 @@ return {
 
 		harpoon.setup(
 			keymap.set("n", "<leader>pm", function()
-				harpoon:list():append()
+				harpoon:list():add()
 			end, { desc = "Mark file with harpoon" }),
 			keymap.set("n", "<leader>ph", function()
 				harpoon.ui:toggle_quick_menu(harpoon:list())
