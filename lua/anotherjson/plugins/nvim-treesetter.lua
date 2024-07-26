@@ -17,6 +17,8 @@ return {
 				"markdown",
 				"norg",
 				"c",
+				"bash",
+				"regex",
 			},
 			sync_install = false,
 			auto_install = true,

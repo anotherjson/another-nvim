@@ -4,9 +4,17 @@ vim.g.maplocalleader = ","
 
 -- for conciseness
 local keymap = vim.keymap
+local api = vim.api
 
 -- getting out of the buffer
 keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Exit buffer" })
+
+-- getting out of insert
+api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = false, desc = "Exit insert" })
+
+-- some file changes to do in normal mode
+api.nvim_set_keymap("n", "E", "$", { noremap = false, desc = "Go to end of line" })
+api.nvim_set_keymap("n", "B", "^", { noremap = false, desc = "Go to begining of line" })
 
 -- moving around in visual
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move command visual up" })
@@ -35,8 +43,8 @@ keymap.set("n", "Q", "<nop>")
 -- quick fix list
 keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz", { desc = "Quick fix next" })
 keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz", { desc = "Quick fix previous" })
-keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "TODO: unknown" })
-keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "TODO: unknown" })
+keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Location list next" })
+keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Location list previous" })
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
@@ -73,14 +81,29 @@ keymap.set(
 	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
 	{ desc = "Replace word on cursor" }
 )
-keymap.set("n", "<leader>xf", "<cmd>!chmod +x %<CR>", { silent = true }, { desc = "Makes certain files exec" })
+keymap.set("n", "<leader>xf", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Makes certain files exec" })
 
 keymap.set("n", "<leader><leader>", function()
 	vim.cmd("so")
 end, { desc = "Source file" })
 
+-- undotree stuff
 keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle on undotree" })
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Start fugitive cmd" })
 
--- gen ai map
-vim.keymap.set({ "n", "v" }, "<leader>]", ":Gen<CR>")
+-- git stuff
+keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Start fugitive cmd" })
+
+-- noice stuff
+api.nvim_set_keymap("n", "<leader>nn", ":Noice dismiss<CR>", { noremap = true })
+
+keymap.set("n", "<leader>ee", "<cmd>GoIfErr<cr>", { silent = true, noremap = true })
+
+-- todo stuff
+vim.keymap.set("n", "]t", function()
+  require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+vim.keymap.set("n", "[t", function()
+  require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+

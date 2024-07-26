@@ -24,7 +24,7 @@ opt.backup = false
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.undofile = true
 
-opt.hlsearch = false
+opt.hlsearch = true
 opt.incsearch = true
 
 -- turn on termguicolors for nightfly colorscheme to work
@@ -55,6 +55,7 @@ local function system(command)
 	return output
 end
 
+-- set python path
 if vim.fn.executable("python3") > 0 then
 	vim.g.python3_host_prog = system("which python3")
 end
