@@ -1,5 +1,6 @@
 -- set leader key to space
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 -- for conciseness
 local keymap = vim.keymap
@@ -60,10 +61,10 @@ keymap.set("n", "<leader>sh", "<C-w>h", { desc = "Move window left" })
 keymap.set("n", "<leader>sj", "<C-w>k", { desc = "Move window down" })
 keymap.set("n", "<leader>sk", "<C-w>j", { desc = "Move window up" })
 keymap.set("n", "<leader>sl", "<C-w>l", { desc = "Move window right" })
-keymap.set("n", "<leader>s<", "<C-w><", { desc = "Resize window left" })
-keymap.set("n", "<leader>s-", "<C-w>-", { desc = "Resize window down" })
-keymap.set("n", "<leader>s+", "<C-w>+", { desc = "Resize window up" })
-keymap.set("n", "<leader>s>", "<C-w>>", { desc = "Resize window right" })
+keymap.set("n", "<leader>s<", "<C-w>5<", { desc = "Resize window left" })
+keymap.set("n", "<leader>s-", "<C-w>5-", { desc = "Resize window down" })
+keymap.set("n", "<leader>s+", "<C-w>5+", { desc = "Resize window up" })
+keymap.set("n", "<leader>s>", "<C-w>5>", { desc = "Resize window right" })
 
 -- additional keymaps
 keymap.set(
@@ -72,7 +73,7 @@ keymap.set(
 	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
 	{ desc = "Replace word on cursor" }
 )
-keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }, { desc = "Makes certain files exec" })
+keymap.set("n", "<leader>xf", "<cmd>!chmod +x %<CR>", { silent = true }, { desc = "Makes certain files exec" })
 
 keymap.set("n", "<leader><leader>", function()
 	vim.cmd("so")
