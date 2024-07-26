@@ -9,9 +9,6 @@ local api = vim.api
 -- getting out of the buffer
 keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Exit buffer" })
 
--- getting out of insert
-api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = false, desc = "Exit insert" })
-
 -- some file changes to do in normal mode
 api.nvim_set_keymap("n", "E", "$", { noremap = false, desc = "Go to end of line" })
 api.nvim_set_keymap("n", "B", "^", { noremap = false, desc = "Go to begining of line" })
@@ -56,9 +53,9 @@ keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decremen
 -- tabs
 keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
 keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
-keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
-keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
-keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+keymap.set("n", "<leader>tl", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
+keymap.set("n", "<leader>th", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
+keymap.set("n", "<leader>tn", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
 -- window management
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
@@ -90,20 +87,19 @@ end, { desc = "Source file" })
 -- undotree stuff
 keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle on undotree" })
 
--- git stuff
-keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = "Start fugitive cmd" })
-
 -- noice stuff
 api.nvim_set_keymap("n", "<leader>nn", ":Noice dismiss<CR>", { noremap = true })
 
 keymap.set("n", "<leader>ee", "<cmd>GoIfErr<cr>", { silent = true, noremap = true })
 
 -- todo stuff
-vim.keymap.set("n", "]t", function()
-  require("todo-comments").jump_next()
+vim.keymap.set("n", "<leader>o]", function()
+	require("todo-comments").jump_next()
 end, { desc = "Next todo comment" })
 
-vim.keymap.set("n", "[t", function()
-  require("todo-comments").jump_prev()
+vim.keymap.set("n", "<leader>o[", function()
+	require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
 
+-- zenmode stuff
+keymap.set("n", "<leader>zm", vim.cmd.ZenMode, { desc = "Momement of zen" })
