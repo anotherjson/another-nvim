@@ -7,7 +7,7 @@ local keymap = vim.keymap
 local api = vim.api
 
 -- getting out of the buffer
-keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Exit buffer" })
+keymap.set("n", "<leader>qq", vim.cmd.Ex, { desc = "Exit buffer" })
 
 -- some file changes to do in normal mode
 api.nvim_set_keymap("n", "E", "$", { noremap = false, desc = "Go to end of line" })
@@ -44,7 +44,7 @@ keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz", { desc = "Location list next" }
 keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz", { desc = "Location list previous" })
 
 -- clear search highlights
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "<leader>/c", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- increment/decrement numbers
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
